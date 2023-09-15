@@ -17,12 +17,12 @@ Route::get('/', function () {
     return view('admin.index');
 });
 
-Route::get('/posts', function () {
-    return view('admin.posts.index');
+Route::get('/transactions', function () {
+    return view('admin.transactions.index');
 });
 
-Route::get('/shows', function () {
-    return view('admin.shows.index');
+Route::get('/recaps', function () {
+    return view('admin.recaps.index');
 });
 
 Route::get('/users', function () {
