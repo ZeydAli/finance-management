@@ -6,7 +6,7 @@
         <img class="w-10" src="{{ asset('assets/profile.png') }}" alt="">
         <div>
           <p class="text-sm text-gray-500">Signed in as</p>
-          <p class="text-sm">Zeyd Ali</p>
+          <p class="text-sm">{{ auth()->user()->username }}</p>
         </div>
       </div>
     </div>
@@ -63,10 +63,13 @@
 
   <div class="absolute inset-x-4 bottom-10">
     <div class="rounded-md">
-      <a class="flex items-center p-3 gap-3" href="">
-        <i class="fa-solid fa-right-from-bracket text-center w-7"></i>
-        Logout
-      </a>
+      <form action="/logout" method="post">
+        @csrf
+        <button type="submit" class="flex items-center p-3 gap-3">
+          <i class="fa-solid fa-right-from-bracket text-center w-7"></i>
+          Logout
+        </button>
+      </form>
     </div>
   </div>
 </div>
