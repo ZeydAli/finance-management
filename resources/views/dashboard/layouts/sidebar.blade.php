@@ -29,20 +29,20 @@
 
   <div class="mt-5">
     <ul>
-      <div class="{{ Request::is('/') ? 'bg-gray-800 text-green-800' : '' }} rounded-md">
-        <a class="flex items-center text-sm p-3 gap-3" href="/">
+      <div class="{{ Request::is('dashboard') ? 'bg-gray-800 text-green-800' : '' }} rounded-md">
+        <a class="flex items-center text-sm p-3 gap-3" href="/dashboard">
           <i class="fa-solid fa-chart-pie text-center w-7"></i>
           Dashboard
         </a>
       </div>
-      <li class="{{ Request::is('transactions') ? 'bg-gray-800 text-green-800' : '' }} rounded-md">
-        <a class="flex items-center text-sm p-3 gap-3" href="/transactions">
+      <li class="{{ Request::is('dashboard/transactions') ? 'bg-gray-800 text-green-800' : '' }} rounded-md">
+        <a class="flex items-center text-sm p-3 gap-3" href="/dashboard/transactions">
           <i class="fa-solid fa-cash-register text-center w-7"></i>
           Transactions
         </a>
       </li>
-      <li class="{{ Request::is('recaps') ? 'bg-gray-800 text-green-800' : '' }} rounded-md">
-        <a class="flex items-center text-sm p-3 gap-3" href="/recaps">
+      <li class="{{ Request::is('dashboard/recaps') ? 'bg-gray-800 text-green-800' : '' }} rounded-md">
+        <a class="flex items-center text-sm p-3 gap-3" href="/dashboard/recaps">
           <i class="fa-solid fa-magnifying-glass-chart text-center w-7"></i>
           Recaps
         </a>
@@ -53,8 +53,8 @@
 
   <ul class="mt-5">
     <li class="text-sm text-green-800 font-bold mb-2">Admin</li>
-    <li class="{{ Request::is('users') ? 'bg-gray-800 text-green-800' : '' }} rounded-md">
-      <a class="flex items-center text-sm p-3 gap-3" href="/users">
+    <li class="{{ Request::is('dashboard/users') ? 'bg-gray-800 text-green-800' : '' }} rounded-md">
+      <a class="flex items-center text-sm p-3 gap-3" href="/dashboard/users">
         <i class="fa-solid fa-users text-center w-7"></i>
         Users Data
       </a>

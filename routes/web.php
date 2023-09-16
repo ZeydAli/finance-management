@@ -13,19 +13,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('admin.index');
+Route::get('/dashboard', function () {
+    return view('dashboard.index');
 });
 
-Route::get('/transactions', function () {
-    return view('admin.transactions.index');
+Route::get('/login', function () {
+    return view('dashboard.login');
 });
 
-Route::get('/recaps', function () {
-    return view('admin.recaps.index');
+Route::get('/dashboard/transactions', function () {
+    return view('dashboard.transactions.index');
 });
 
-Route::get('/users', function () {
-    return view('admin.users.index');
+Route::get('/dashboard/recaps', function () {
+    return view('dashboard.recaps.index');
+});
+
+Route::get('/dashboard/users', function () {
+    return view('dashboard.users.index');
 });
 

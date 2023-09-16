@@ -11,7 +11,7 @@
 <body> 
 
   <div class="flex">
-    @include('admin.layouts.sidebar')
+    @include('dashboard.layouts.sidebar')
 
     <main class="grow bg-gray-100 p-4">
       @yield('container')
