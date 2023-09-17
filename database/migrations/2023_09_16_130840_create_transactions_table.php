@@ -15,8 +15,10 @@ return new class extends Migration
             $table->id();
             $table->foreignId('user_id');
             $table->foreignId('type_id');
+            $table->integer('amount');
+            $table->string('title', 50);
+            $table->string('category', 50);
             $table->string('desc');
-            $table->string('note');
             $table->date('date');
             $table->timestamps();
         });

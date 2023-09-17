@@ -35,7 +35,7 @@
           Dashboard
         </a>
       </div>
-      <li class="{{ Request::is('dashboard/transactions') ? 'bg-gray-800 text-green-800' : '' }} rounded-md">
+      <li class="{{ Request::is('dashboard/transactions*') ? 'bg-gray-800 text-green-800' : '' }} rounded-md">
         <a class="flex items-center text-sm p-3 gap-3" href="/dashboard/transactions">
           <i class="fa-solid fa-cash-register text-center w-7"></i>
           Transactions
