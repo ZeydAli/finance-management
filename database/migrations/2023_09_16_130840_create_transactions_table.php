@@ -18,7 +18,7 @@ return new class extends Migration
             $table->integer('amount');
             $table->string('title', 50);
             $table->string('category', 50);
-            $table->string('desc');
+            $table->string('desc')->nullable();
             $table->date('date');
             $table->timestamps();
         });

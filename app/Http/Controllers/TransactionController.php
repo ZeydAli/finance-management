@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Transaction;
 use App\Models\TransactionType;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 
 class TransactionController extends Controller
@@ -11,11 +12,21 @@ class TransactionController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $transactions = Transaction::orderBy('created_at', 'desc')->get();
+        $dateParam = $request->query('date', now()->toDateString());
 
-        return view('dashboard.transactions.index', compact('transactions'));
+        $selectedDate = Carbon::parse($dateParam);
+
+        $transactions = Transaction::whereDate('date', $selectedDate)->orderBy('created_at', 'desc')->get();
+
+        $totalAmount = $transactions->sum('amount');
+        $incomeTotal = $transactions->where('type_id', 1)->sum('amount');
+        $expensesTotal = $transactions->where('type_id', 2)->sum('amount');
+
+        $balance = $incomeTotal - $expensesTotal;
+
+        return view('dashboard.transactions.index', compact('transactions', 'incomeTotal', 'expensesTotal', 'balance', 'selectedDate'));
     }
 
     /**
@@ -39,7 +50,7 @@ class TransactionController extends Controller
             'amount' => 'required|integer',
             'title' => 'required|max:50',
             'category' => 'required|max:50',
-            'desc' => 'required|max:255'
+            'desc' => 'nullable|max:255'
         ]);
 
         $validatedData['date'] = \Carbon\Carbon::createFromFormat('d/m/Y', $validatedData['date'])->format('Y-m-d');
@@ -54,17 +65,21 @@ class TransactionController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(string $id)
-    {
-        //
-    }
+    // public function show(string $id)
+    // {
+    //     //
+    // }
 
     /**
      * Show the form for editing the specified resource.
      */
     public function edit(string $id)
     {
-        //
+        $transaction = Transaction::findOrFail($id);
+
+        $types = TransactionType::all();
+
+        return view('dashboard.transactions.edit', compact('types', 'transaction'));
     }
 
     /**
@@ -72,7 +87,25 @@ class TransactionController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $rules = [
+            'date' => 'required|date_format:d/m/Y',
+            'type_id' => 'required',
+            'amount' => 'required|integer',
+            'title' => 'required|max:50',
+            'category' => 'required|max:50',
+            'desc' => 'nullable|max:255'
+        ];
+
+        $validatedData = $request->validate($rules);
+
+        $validatedData['date'] = \Carbon\Carbon::createFromFormat('d/m/Y', $validatedData['date'])->format('Y-m-d');
+
+        $validatedData['user_id'] = auth()->user()->id;
+
+        Transaction::where('id', $id)
+            ->update($validatedData);
+
+        return redirect('/dashboard/transactions')->with('success', 'Item has been updated!');
     }
 
     /**
@@ -80,6 +113,9 @@ class TransactionController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+
+        Transaction::destroy($id);
+
+        return redirect('/dashboard/transactions')->with('success', 'Item has been deleted!');
     }
 }

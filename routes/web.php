@@ -15,6 +15,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+Route::get('/', function () {
+    return redirect('/login');
+});
+
 Route::get('/dashboard', function () {
     return view('dashboard.index');
 })->middleware('auth');
@@ -23,7 +27,7 @@ Route::get('/login', [LoginController::class, 'index'])->name('login')->middlewa
 Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
-Route::resource('/dashboard/transactions', TransactionController::class)->middleware('auth');
+Route::resource('/dashboard/transactions', TransactionController::class)->except('show')->middleware('auth');
 
 Route::get('/dashboard/recaps', function () {
     return view('dashboard.recaps.index');
