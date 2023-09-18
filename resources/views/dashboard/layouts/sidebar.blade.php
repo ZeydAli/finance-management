@@ -1,5 +1,5 @@
 <div class="min-h-screen w-60 p-4 bg-gray-900 text-gray-300">
-  <div class="rounded-md relative overflow-hidden">
+  <div class="rounded-md relative overflow-hidden bg-gray-800">
     <input type="checkbox" class="peer absolute top-0 inset-x-0 w-full h-12 opacity-0 z-10 cursor-pointer">
     <div class="flex items-center justify-between p-2">
       <div class="flex items-center gap-4">
@@ -12,12 +12,12 @@
     </div>
 
     <div class="absolute top-4 right-3 text-white transition-transform duration-500 rotate-0 peer-checked:rotate-180">
-      <i class="fa-solid fa-chevron-down"></i>
+      <i class="fa-solid fa-angle-down"></i>
     </div>
 
-    <div class="overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40">
+    <div class="overflow-hidden transition-all duration-500 max-h-0 peer-checked:max-h-40 ">
       <ul aria-labelledby="dropdownDefaultButton">
-        <div class="rounded-md transition-height">
+        <div class="rounded-b-md transition-height border-t border-t-gray-700">
           <a class="flex items-center text-sm p-3 gap-3" href="/">
             <i class="fa-solid fa-user text-center w-7"></i>
             Account Setting

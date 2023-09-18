@@ -40,7 +40,7 @@
   @foreach($transactions as $transaction)
   <div class="mt-4 flex flex-col gap-4">
     @if($transaction->type_id === 1)
-    <button type="button" onclick="location.href='/dashboard/transactions/{{ $transaction->id }}/edit'" class="w-full px-4 py-2 border border-gray-300 rounded-md outline-none hover:outline-offset-1 hover:outline-green-500 hover:bg-gray-200">
+    <button type="button" onclick="location.href='/dashboard/transactions/{{ $transaction->id }}/edit'" class="w-full px-4 py-2 border border-gray-300 rounded-md outline-none hover:bg-green-200">
       <div class="flex items-center justify-between">
         <div class="flex flex-col items-start">
           <p>{{ $transaction->title }}</p>
@@ -53,7 +53,7 @@
       </div>
     </button>
     @else
-    <button type="button" onclick="location.href='/dashboard/transactions/{{ $transaction->id }}/edit'" class="w-full px-4 py-2 border border-gray-300 rounded-md outline-none hover:outline-offset-1 hover:outline-red-500 hover:bg-gray-200">
+    <button type="button" onclick="location.href='/dashboard/transactions/{{ $transaction->id }}/edit'" class="w-full px-4 py-2 border border-gray-300 rounded-md outline-none hover:bg-red-200">
       <div class="flex items-center justify-between">
         <div class="flex flex-col items-start">
           <p>{{ $transaction->title }}</p>

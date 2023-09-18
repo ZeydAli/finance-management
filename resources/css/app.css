@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.font-sans {
+    font-feature-settings: "cv02" on, "cv03" on, "cv04" on, "cv11" on;
+}

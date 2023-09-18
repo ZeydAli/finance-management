@@ -1,4 +1,5 @@
 /** @type {import('tailwindcss').Config} */
+const defaultTheme = require("tailwindcss/defaultTheme");
 export default {
     content: [
         "./resources/**/*.blade.php",
@@ -10,6 +11,9 @@ export default {
         extend: {
             transitionProperty: {
                 height: "height",
+            },
+            fontFamily: {
+                sans: ["Inter var", ...defaultTheme.fontFamily.sans],
             },
         },
     },

@@ -10,7 +10,7 @@
   @vite('resources/css/app.css')
   @vite('resources/js/app.js')
 </head>
-<body> 
+<body class="font-sans"> 
 
   <div class="flex">
     @include('dashboard.layouts.sidebar')

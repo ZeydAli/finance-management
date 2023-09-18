@@ -8,7 +8,7 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   @vite('resources/css/app.css')
 </head>
-<body> 
+<body class="font-sans"> 
   <div class="flex items-center justify-center min-h-screen">
     <div class="flex flex-col gap-8 items-center border p-8 rounded-md">
       <h1 class="text-lg font-medium">Welcome Back!</h1>
