@@ -15,7 +15,7 @@
   <div class="flex">
     @include('dashboard.layouts.sidebar')
 
-    <main class="grow bg-gray-100 p-4">
+    <main class="grow bg-zinc-900 p-4">
       @yield('container')
     </main>
   </div>

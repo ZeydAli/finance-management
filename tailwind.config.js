@@ -15,6 +15,11 @@ export default {
             fontFamily: {
                 sans: ["Inter var", ...defaultTheme.fontFamily.sans],
             },
+            colors: {
+                accent: "#252130",
+                expenses: "#EE4A49",
+                income: "#0BBA7A",
+            },
         },
     },
     plugins: [require("tw-elements/dist/plugin.cjs")],
