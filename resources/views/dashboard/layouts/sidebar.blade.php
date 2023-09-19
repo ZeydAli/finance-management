@@ -1,5 +1,5 @@
-<div class="min-h-screen w-60 p-4 bg-black text-gray-300">
-  <div class="rounded-md relative overflow-hidden bg-accent">
+<div class="min-h-screen w-60 p-4 bg-component text-gray-300">
+  <div class="rounded-md relative overflow-hidden bg-component2">
     <input type="checkbox" class="peer absolute top-0 inset-x-0 w-full h-12 opacity-0 z-10 cursor-pointer">
     <div class="flex items-center justify-between p-2">
       <div class="flex items-center gap-4">
@@ -29,19 +29,19 @@
 
   <div class="mt-5">
     <ul>
-      <div class="{{ Request::is('dashboard') ? 'bg-blue-400 text-black font-semibold' : '' }} rounded-md">
+      <div class="{{ Request::is('dashboard') ? 'bg-accent text-white font-semibold' : 'text-gray-500' }} rounded-md">
         <a class="flex items-center text-sm p-3 gap-3" href="/dashboard">
           <i class="fa-solid fa-chart-pie text-center w-7"></i>
           Dashboard
         </a>
       </div>
-      <li class="{{ Request::is('dashboard/transactions*') ? 'bg-blue-400 text-black font-semibold' : '' }} rounded-md">
+      <li class="{{ Request::is('dashboard/transactions*') ? 'bg-accent text-white font-semibold' : 'text-gray-500' }} rounded-md">
         <a class="flex items-center text-sm p-3 gap-3" href="/dashboard/transactions">
           <i class="fa-solid fa-cash-register text-center w-7"></i>
           Transactions
         </a>
       </li>
-      <li class="{{ Request::is('dashboard/recaps') ? 'bg-blue-400 text-black font-semibold' : '' }} rounded-md">
+      <li class="{{ Request::is('dashboard/recaps') ? 'bg-accent text-white font-semibold' : 'text-gray-500' }} rounded-md">
         <a class="flex items-center text-sm p-3 gap-3" href="/dashboard/recaps">
           <i class="fa-solid fa-magnifying-glass-chart text-center w-7"></i>
           Recaps
@@ -53,7 +53,7 @@
 
   <ul class="mt-5">
     <li class="text-sm text-green-700 font-bold mb-2">Admin</li>
-    <li class="{{ Request::is('dashboard/users') ? 'bg-blue-400 text-black font-semibold' : '' }} rounded-md">
+    <li class="{{ Request::is('dashboard/users') ? 'bg-accent text-white font-semibold' : 'text-gray-500' }} rounded-md">
       <a class="flex items-center text-sm p-3 gap-3" href="/dashboard/users">
         <i class="fa-solid fa-users text-center w-7"></i>
         Users Data
@@ -65,7 +65,7 @@
     <div class="rounded-md">
       <form action="/logout" method="post">
         @csrf
-        <button type="submit" class="flex items-center p-3 gap-3">
+        <button type="submit" class="flex items-center p-3 gap-3 text-gray-500">
           <i class="fa-solid fa-right-from-bracket text-center w-7"></i>
           Logout
         </button>

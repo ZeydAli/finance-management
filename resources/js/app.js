@@ -1,3 +1,4 @@
 // import "./bootstrap";
-import { Datepicker, Input, initTE } from "tw-elements";
-initTE({ Datepicker, Input });
+import { Datepicker, Input, Select, initTE } from "tw-elements";
+initTE({ Datepicker, Input, Select });
+import "flowbite";
