@@ -45,7 +45,7 @@ class TransactionController extends Controller
     public function store(Request $request)
     {
         $validatedData = $request->validate([
-            'date' => 'required|date_format:d/m/Y',
+            'date' => 'required|date_format:Y-m-d',
             'type_id' => 'required',
             'amount' => 'required|integer',
             'title' => 'required|max:50',
@@ -53,13 +53,13 @@ class TransactionController extends Controller
             'desc' => 'nullable|max:255'
         ]);
 
-        $validatedData['date'] = \Carbon\Carbon::createFromFormat('d/m/Y', $validatedData['date'])->format('Y-m-d');
+        // $validatedData['date'] = \Carbon\Carbon::createFromFormat('d/m/Y', $validatedData['date'])->format('Y-m-d');
 
         $validatedData['user_id'] = auth()->user()->id;
 
         Transaction::create($validatedData);
 
-        return redirect('/dashboard/transactions')->with('success', 'New item has been added!');
+        return redirect('/dashboard/transactions?date=' . $request->date)->with('success', 'New item has been added!');
     }
 
     /**
@@ -88,7 +88,7 @@ class TransactionController extends Controller
     public function update(Request $request, string $id)
     {
         $rules = [
-            'date' => 'required|date_format:d/m/Y',
+            'date' => 'required|date_format:Y-m-d',
             'type_id' => 'required',
             'amount' => 'required|integer',
             'title' => 'required|max:50',
@@ -98,14 +98,14 @@ class TransactionController extends Controller
 
         $validatedData = $request->validate($rules);
 
-        $validatedData['date'] = \Carbon\Carbon::createFromFormat('d/m/Y', $validatedData['date'])->format('Y-m-d');
+        // $validatedData['date'] = \Carbon\Carbon::createFromFormat('d/m/Y', $validatedData['date'])->format('Y-m-d');
 
         $validatedData['user_id'] = auth()->user()->id;
 
         Transaction::where('id', $id)
             ->update($validatedData);
 
-        return redirect('/dashboard/transactions')->with('success', 'Item has been updated!');
+        return redirect('/dashboard/transactions?date=' . $request->date)->with('success', 'Item has been updated!');
     }
 
     /**
@@ -113,9 +113,9 @@ class TransactionController extends Controller
      */
     public function destroy(string $id)
     {
-
+        $transaction = Transaction::findOrFail($id);
         Transaction::destroy($id);
 
-        return redirect('/dashboard/transactions')->with('success', 'Item has been deleted!');
+        return redirect('/dashboard/transactions?date=' . $transaction->date)->with('success', 'Item has been deleted!');
     }
 }
