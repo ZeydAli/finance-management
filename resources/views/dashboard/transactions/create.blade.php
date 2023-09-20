@@ -3,6 +3,10 @@
   <form action="/dashboard/transactions" method="post">
     @csrf
     <div class="flex flex-col items-center justify-center">
+      @php
+          $dateParam = request('date');
+      @endphp
+
       <div class="relative mb-3 w-10/12 md:w-8/12 lg:w-6/12 xl:w-4/12" data-te-inline="true" data-te-datepicker-init data-te-input-wrapper-init data-te-format="yyyy-mm-dd">
         <input type="text" id="date" name="date" class="peer block min-h-[auto] w-full rounded-lg bg-component text-white p-2.5 border-0 outline-none transition-all duration-200 ease-linear focus:placeholder:opacity-100 peer-focus:text-blue-400 data-[te-input-state-active]:placeholder:opacity-100 motion-reduce:transition-none [&:not([data-te-input-placeholder-active])]:placeholder:opacity-0" required placeholder="Select a date" data-te-datepicker-toggle-ref data-te-datepicker-toggle-button-ref value="{{ old('date') }}" />
         <label for="floatingInput" class="pointer-events-none absolute left-4 top-1.5 mb-0 max-w-[90%] origin-[0_0] truncate pt-[0.37rem] text-white text-sm transition-all duration-200 ease-out peer-focus:-translate-y-[5rem] peer-focus:scale-[1] peer-focus:text-blue-400 peer-data-[te-input-state-active]:-translate-y-[1.2rem] peer-data-[te-input-state-active]:-translate-x-[0.2rem] peer-data-[te-input-state-active]:scale-[0.8] motion-reduce:transition-none">Select a date</label>
@@ -66,7 +70,7 @@
 
       </div>
       <div class="flex gap-4 justify-between mt-4 w-10/12 md:w-8/12 lg:w-6/12 xl:w-4/12">
-        <button type="button" onclick="location.href='/dashboard/transactions'" class="text-white flex items-center gap-2 font-semibold">
+        <button type="button" onclick="location.href='/dashboard/transactions?date={{ $dateParam }}'" class="text-white flex items-center gap-2 font-semibold">
           <i class="fa-solid fa-angle-left text-gray-500"></i>
           Back
         </button>

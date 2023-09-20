@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\RecapsController;
 use App\Http\Controllers\TransactionController;
 use Illuminate\Support\Facades\Route;
 
@@ -29,9 +30,7 @@ Route::post('/logout', [LoginController::class, 'logout']);
 
 Route::resource('/dashboard/transactions', TransactionController::class)->except('show')->middleware('auth');
 
-Route::get('/dashboard/recaps', function () {
-    return view('dashboard.recaps.index');
-})->middleware('auth');
+Route::get('/dashboard/recaps', [RecapsController::class, 'index'])->middleware('auth');
 
 Route::get('/dashboard/users', function () {
     return view('dashboard.users.index');

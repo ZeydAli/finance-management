@@ -42,7 +42,7 @@
   </div>
 
   <div class="mt-4 flex items-center justify-center">
-    <button class="group bg-component rounded-lg h-10 w-10" onclick="location.href='/dashboard/transactions/create'">
+    <button class="group bg-component rounded-lg h-10 w-10" onclick="location.href='/dashboard/transactions/create?date={{$selectedDate}}'">
       <i class="fa-solid fa-plus text-gray-500 group-hover:text-white"></i>
     </button>
   </div>

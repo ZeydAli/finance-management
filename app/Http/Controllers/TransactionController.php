@@ -16,7 +16,7 @@ class TransactionController extends Controller
     {
         $dateParam = $request->query('date', now()->toDateString());
 
-        $selectedDate = Carbon::parse($dateParam);
+        $selectedDate = Carbon::parse($dateParam)->format('Y-m-d');
 
         $transactions = Transaction::whereDate('date', $selectedDate)->orderBy('created_at', 'desc')->get();
 
